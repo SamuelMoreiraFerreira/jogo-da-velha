@@ -19,7 +19,7 @@ const winners_pattern = [
 
 ]
 
-export default function calculateWinner (grid)
+export default function checkWinner (grid)
 {
 
     for (let i = 0; i < winners_pattern.length; i++)

@@ -2,12 +2,13 @@ import { useState } from "react";
 import Square from "../Square";
 import board from './Board.module.css';
 
-export default function Board ({ grid, currentPlayer, onPlay })
+export default function Board ({ grid, currentPlayer, onPlay, isActive })
 {
 
     function handleClick (i)
     {
 
+        if (!isActive) return;     
         if (grid[i] != null) return;
 
         grid[i] = currentPlayer;

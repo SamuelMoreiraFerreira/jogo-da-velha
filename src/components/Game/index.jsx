@@ -1,11 +1,14 @@
 import Board from '../Board';
 import game from './Game.module.css';
-import calculateWinner from '../../utils/calculateWinner.js';
+import checkWinner from '../../utils/checkWinner.js';
+import checkDraw from '../../utils/checkDraw.js';
 import { useState } from 'react';
 import HistoryPanel from '../HistoryPanel/index.jsx';
 
 export default function Game ()
 {
+
+    let gameActive = true;
 
     const [history, setHistory] = useState([Array(9).fill(null)]);
 
@@ -29,11 +32,31 @@ export default function Game ()
 
     }
     
-    let infoText;
+    //#region Info Label
 
-    if (calculateWinner(currentGrid))
+    let infoText = 'Jogador: ' + currentPlayer;
+
+    if (checkDraw(currentGrid))
     {
-        infoText = `Ganhador: ${currentPlayer}`;
+        infoText = 'Empate!'
+        gameActive = false;
+    }
+
+    const winner = checkWinner(currentGrid)
+    if (winner)
+    {
+        infoText = 'Ganhador: ' + winner;
+        gameActive = false;
+    }
+
+    //#endregion
+
+    function handleReset ()
+    {
+        gameActive = true;
+
+        setHistory([Array(9).fill(null)]);
+        setCurrentMove(0);
     }
 
     return (
@@ -51,9 +74,16 @@ export default function Game ()
                         grid={currentGrid} 
                         currentPlayer={currentPlayer} 
                         onPlay={handlePlay} 
+                        isActive={gameActive}
                     />
                     
                 </section>
+
+                <button
+                    onClick={handleReset}
+                >
+                    Reset
+                </button>
             </div>
 
             <aside className={game.history}>
