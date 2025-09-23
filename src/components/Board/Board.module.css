@@ -1,0 +1,7 @@
+.board
+{
+    display: flex;
+    flex-wrap: wrap;
+
+    border-collapse: collapse;
+}
