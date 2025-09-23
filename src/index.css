@@ -1,6 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&display=swap');
+
 :root
 {
-    font-size: 62.5%;
+    --tanjiro-green: #0b6b3a;
+    --tanjiro-green-light: #66c17a;
+    --nezuko-pink: #ff86a0;
+    --accent-gold: #f2c94c;
+    --paper: #f6efe7;
+    --ink: #222428;
+    --muted: #7a7a7a;
+
+    --board-size: 360px;
+    --square-size: calc(var(--board-size) / 3);
+}
+
+html,
+body, 
+#root
+{ 
+    height: 100%; 
+}
+
+body
+{
+    font-family: 'Noto Sans JP', system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
+    background: linear-gradient(160deg, rgba(11,107,58,0.06) 0%, rgba(248,239,231,0.5) 40%, rgba(255,214,223,0.04) 100%);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 *

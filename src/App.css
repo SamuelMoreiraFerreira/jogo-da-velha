@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap');
+
+:root
+{
+    --tanjiro-green: #0b6b3a;
+    --tanjiro-green-light: #66c17a;
+    --nezuko-pink: #ff86a0;
+    --nezuko-bamboo: #8fcfc1;
+    --accent-gold: #f2c94c;
+    --paper: #f6efe7;
+    --ink: #222428;
+    --muted: #7a7a7a;
+
+    --board-size: 360px;
+    --square-size: calc(var(--board-size) / 3);
+}
+
+html, 
+body, 
+#root
+{
+  height: 100%;
+}
+
+body{
+  margin: 0;
+  font-family: 'Noto Sans JP', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background: linear-gradient(160deg, rgba(11,107,58,0.08) 0%, rgba(248,239,231,0.6) 35%, rgba(255,214,223,0.06) 100%);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* faint paper texture using multiple gradients */
+body::before{
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 20px 20px;
+  mix-blend-mode: overlay;
+}
+
+/* subtle Japanese ink-stamp in a corner (decorative) */
+.app-stamp{
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  font-family: 'Playfair Display', serif;
+  color: rgba(11,107,58,0.18);
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+/* utility: center layout */
+.app-center{
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 36px;
+}
+
+/* Responsive container for the game */
+.game-shell{
+  width: min(920px, 96vw);
+  background: linear-gradient(180deg, rgba(255,255,255,0.56), rgba(255,255,255,0.38));
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(16, 24, 32, 0.18);
+  border: 1px solid rgba(11,107,58,0.06);
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 22px;
+  padding: 22px;
+}
+
+@media (max-width: 880px)
+{
+
+  .game-shell { grid-template-columns: 1fr; }
+
+}
