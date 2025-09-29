@@ -1,6 +1,5 @@
-import { useState } from "react";
-import Square from "../Square";
-import board from './Board.module.css';
+import Square from '../Square';
+import styles from './Board.module.css';
 
 export default function Board ({ grid, currentPlayer, onPlay, isActive })
 {
@@ -18,7 +17,7 @@ export default function Board ({ grid, currentPlayer, onPlay, isActive })
 
     return (
 
-        <>
+        <div className={styles.board}>
         {
 
             // 'Array(3).fill(null)' -> Criamos um array com 3 elemeentos com valor null
@@ -31,32 +30,28 @@ export default function Board ({ grid, currentPlayer, onPlay, isActive })
 
                 return (
 
-                    <div className={board.row}>
-                    {
-                        Array(3).fill(null) .map ((_, j) => {
+                    Array(3).fill(null) .map ((_, j) => {
 
-                            const squareIndex = i * 3 + j;
+                        const squareIndex = i * 3 + j;
 
-                            return (
+                        return (
 
-                                <Square 
-                                    index={squareIndex} 
-                                    onClick={handleClick}
-                                >
-                                    {grid[squareIndex]}
-                                </Square>
+                            <Square 
+                                index={squareIndex} 
+                                onClick={handleClick}
+                            >
+                                {grid[squareIndex]}
+                            </Square>
 
-                            )
+                        )
 
-                        })
-                    }
-                    </div>
+                    })
 
-                )
+                );
 
             })
         }
-        </>
+        </div>
 
     )    
 
